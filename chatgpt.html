@@ -15,6 +15,7 @@
 <style>
   :root{
     --navy:#14213d; --deep:#0f1a34; --navy2:#22335a; --coral:#ff5a3c; --coral-d:#e8462a;
+    --cta:#d0381c; --cta-d:#b32f17; --coral-ink:#c2361b;
     --cream:#fff7ef; --sand:#f3e7da; --green:#16885b; --greenbg:#e7f6ef; --red:#c8372d; --redbg:#fdecea;
     --ink:#1d1d1f; --muted:#5b6070; --line:#e6dccf; --radius:16px;
   }
@@ -29,13 +30,15 @@
   .wrap{ width:min(1120px, 100% - 40px); margin-inline:auto; }
   .narrow{ width:min(760px, 100% - 40px); margin-inline:auto; }
   section{ padding:72px 0; }
-  .kicker{ font-weight:800; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral); margin-bottom:12px; }
+  .kicker{ font-weight:800; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--coral-ink); margin-bottom:12px; }
+  .hero .kicker, .turn .kicker, .offer .kicker, .final .kicker{ color:var(--coral); }
   .center{ text-align:center; }
   .lead{ font-size:19px; color:var(--navy2); }
 
   /* botão */
-  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--coral); color:#fff; text-decoration:none; font-weight:800; font-size:18px; padding:18px 30px; border-radius:14px; box-shadow:0 10px 24px rgba(255,90,60,.35); transition:transform .15s, background .15s; text-align:center; }
-  .btn:hover{ background:var(--coral-d); transform:translateY(-2px); }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; background:var(--cta); color:#fff; text-decoration:none; font-weight:800; font-size:18px; padding:18px 30px; border-radius:14px; box-shadow:0 10px 24px rgba(160,40,15,.3); transition:transform .15s, background .15s; text-align:center; }
+  .btn:focus-visible{ outline:3px solid #fff; outline-offset:3px; box-shadow:0 0 0 6px var(--cta); }
+  .btn:hover{ background:var(--cta-d); transform:translateY(-2px); }
   .btn .arrow{ font-size:22px; line-height:1; }
   .btn.full{ width:100%; }
   .trust{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:14px; font-size:14px; color:#c3cbe0; }
@@ -44,7 +47,7 @@
   .trust.dark span:before{ color:var(--green); }
 
   /* topo */
-  .top{ background:var(--coral); color:#fff; text-align:center; font-size:14px; font-weight:700; padding:9px 12px; }
+  .top{ background:var(--cta); color:#fff; text-align:center; font-size:14px; font-weight:700; padding:9px 12px; }
 
   /* hero */
   .hero{ background:radial-gradient(1200px 600px at 75% 40%, #3a2240 0%, rgba(15,26,52,0) 60%), var(--deep); color:#fff; padding:48px 0 64px; overflow:hidden; }
@@ -70,7 +73,7 @@
   .book:before{ transform:translate(9px,7px); z-index:2; box-shadow:0 0 0 1px #ddd2c4; }
   .book:after{ transform:translate(17px,13px); z-index:1; background:#e9e1d6; }
   .sheet{ position:absolute; width:220px; right:2%; bottom:10px; transform:rotate(7deg); border-radius:6px; box-shadow:0 24px 50px rgba(0,0,0,.5); z-index:4; }
-  .seal{ position:absolute; z-index:5; left:4%; top:52%; width:118px; height:118px; border-radius:50%; background:var(--coral); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-weight:800; font-size:12px; line-height:1.15; transform:rotate(-10deg); box-shadow:0 12px 30px rgba(0,0,0,.4); }
+  .seal{ position:absolute; z-index:5; left:4%; top:52%; width:118px; height:118px; border-radius:50%; background:var(--cta); color:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; font-weight:800; font-size:12px; line-height:1.15; transform:rotate(-10deg); box-shadow:0 12px 30px rgba(0,0,0,.4); }
   .seal b{ font-family:"Space Grotesk"; font-size:40px; line-height:1; }
 
   /* dor */
@@ -95,7 +98,7 @@
   .ab .bad{ background:var(--redbg); }
   .ab .good{ background:var(--greenbg); }
   .lbl{ display:block; font-weight:800; font-size:12px; letter-spacing:.12em; text-transform:uppercase; margin-bottom:8px; }
-  .bad .lbl{ color:var(--red); } .good .lbl{ color:var(--green); }
+  .bad .lbl{ color:var(--red); } .good .lbl{ color:#11704a; }
 
   /* virada */
   .turn{ background:var(--navy); color:#fff; }
@@ -143,24 +146,16 @@
   .chips{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:28px 0 6px; }
   .chips span{ background:#fff; border:1px solid var(--line); border-radius:999px; padding:8px 14px; font-size:15px; font-weight:600; color:var(--navy); }
 
-  /* prova de teste */
-  .tested .box{ background:#fff; border:2px solid var(--navy); border-radius:24px; padding:34px; display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:start; }
-  .tested .stamp{ position:relative; overflow:hidden; width:132px; height:132px; border-radius:50%; border:4px solid var(--green); color:var(--green); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:"Space Grotesk"; font-weight:700; text-align:center; line-height:1.02; transform:rotate(-8deg); font-size:19px; letter-spacing:-.01em; }
-  .tested .stamp::before{ content:"?"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:150px; line-height:1; color:var(--green); opacity:.13; }
-  .tested .stamp span{ position:relative; }
-  .facts{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:18px; }
-  .facts div{ background:var(--cream); border-radius:12px; padding:14px; font-size:15px; }
-  .facts b{ display:block; font-family:"Space Grotesk"; font-size:28px; color:var(--coral); }
 
   /* para quem */
-  .who .grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:30px; }
+  .who .grid{ max-width:560px; margin:30px auto 0; }
+  .who .nao{ text-align:center; color:var(--muted); font-size:15px; max-width:520px; margin:18px auto 0; }
   .who ul{ list-style:none; padding:0; margin:0; }
   .who li{ padding:10px 0 10px 34px; position:relative; border-bottom:1px solid var(--line); }
   .who li:last-child{ border:0; }
   .who .yes li:before{ content:"✓"; position:absolute; left:0; top:9px; color:var(--green); font-weight:800; font-size:18px; }
-  .who .no li:before{ content:"✕"; position:absolute; left:2px; top:9px; color:var(--red); font-weight:800; }
   .who .col{ border-radius:20px; padding:26px; }
-  .who .yes{ background:var(--greenbg); } .who .no{ background:#f6f6f8; }
+  .who .yes{ background:var(--greenbg); }
 
   /* oferta */
   .offer{ background:radial-gradient(900px 500px at 20% 30%, #3a2240 0%, rgba(15,26,52,0) 60%), var(--deep); color:#fff; }
@@ -220,18 +215,23 @@
     .buy .price-inline{ margin-top:16px; }
     .buy .btn{ font-size:16px; padding:16px 18px; }
     .buy .price-inline .small{ font-size:13px; }
-    .mock{ height:430px; margin-top:8px; }
-    .book{ width:250px; top:10px; }
-    .sheet{ width:160px; right:0; }
-    .seal{ width:96px; height:96px; font-size:11px; left:0; }
-    .seal b{ font-size:32px; }
-    .pains, .ab, .who .grid, .facts{ grid-template-columns:1fr; }
-    .why .pic{ order:-1; }
+    .mock{ display:none; }
+    .pains{ gap:8px; margin-top:22px; }
+    .pains div{ padding:12px 14px 12px 46px; }
+    .pains div:before{ left:12px; top:12px; }
+    .turn .grid{ gap:0; }
+    .turn .grid > div:first-child{ display:contents; }
+    .turn .kicker{ order:1; } .turn h2{ order:2; } .turn .democol{ order:3; margin:26px 0 6px; } .turn .steps{ order:4; }
+    .turn .grid > div:first-child > .btn{ order:5; justify-self:start; }
+    .btn{ font-size:16px; padding:16px 18px; }
+    .offer .box img{ width:44%; }
+    .final .grid > div:last-child img{ max-width:74%; margin:0 auto; }
+    .pains, .ab{ grid-template-columns:1fr; }
+    .why .pic{ display:none; }
     .gallery{ grid-template-columns:repeat(6, 74%); overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:12px; margin-inline:-20px; padding-inline:20px; }
     .card{ scroll-snap-align:center; }
-    .tested .box{ grid-template-columns:1fr; padding:26px; justify-items:start; }
     .offer .box{ padding:24px; gap:20px; }
-    .offer .box img{ width:62%; margin:0 auto; }
+    .offer .box img{ margin:0 auto; }
     .price .val{ font-size:64px; }
     .final .txt{ padding:56px 0 10px; }
     .screen{ height:500px; }
@@ -323,13 +323,13 @@
       </ol>
       <a class="btn" href="https://pay.kiwify.com.br/quSOvr4" data-cta="virada">Quero a cartilha por R$&nbsp;27 <span class="arrow">→</span></a>
     </div>
-    <div>
+    <div class="democol">
       <div class="phone" id="demo">
         <div class="screen">
           <div class="bar"><i></i>Sua IA (versão gratuita)</div>
           <div class="chat" id="chat">
-            <div class="msg me cmd"><b>VOCÊ COLA O COMANDO C03</b>Quero montar meu currículo para auxiliar de estoque. Antes de escrever qualquer coisa, me entreviste. UMA pergunta por vez...</div>
-            <div class="msg ai">Qual foi seu emprego mais recente? Diga o cargo, a empresa e quanto tempo ficou lá.</div>
+            <div class="msg me cmd show"><b>VOCÊ COLA O COMANDO C03</b>Quero montar meu currículo para auxiliar de estoque. Antes de escrever qualquer coisa, me entreviste. UMA pergunta por vez...</div>
+            <div class="msg ai show">Qual foi seu emprego mais recente? Diga o cargo, a empresa e quanto tempo ficou lá.</div>
             <div class="msg me">Auxiliar de estoque num atacadista, 4 anos.</div>
             <div class="msg ai">Em um dia típico, quantas caixas ou pallets você recebia ou conferia? Pense num dia comum.</div>
             <div class="msg me">Uns 300 volumes por dia, e eu fazia o inventário do mês.</div>
@@ -366,20 +366,8 @@
   </div>
 </section>
 
-<!-- 6. TESTADO -->
-<section class="tested">
-  <div class="narrow">
-    <div class="box">
-      <div class="stamp"><span>AS<br>PERGUNTAS<br>CERTAS</span></div>
-      <div>
-        <h3 style="font-size:26px">Você tem mais resultados do que imagina. Só nunca fizeram as perguntas certas.</h3>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 7. PARA QUEM -->
-<section class="who" style="padding-top:0">
+<section class="who">
   <div class="narrow">
     <div class="center"><div class="kicker">Seja honesto com você</div><h2>Para quem é esta cartilha</h2></div>
     <div class="grid">
@@ -389,12 +377,8 @@
         <li>Está no primeiro emprego, mudando de área ou voltando ao mercado.</li>
         <li>Topa reservar 1 hora para fazer direito uma vez.</li>
       </ul></div>
-      <div class="col no"><h3>Não é para você se</h3><ul>
-        <li>Quer que a IA invente experiência que você não tem.</li>
-        <li>Procura promessa de emprego garantido.</li>
-        <li>Prefere pagar alguém para fazer tudo por você.</li>
-      </ul></div>
     </div>
+    <p class="nao">Não é para quem quer que a IA invente experiência, procura promessa de emprego garantido ou prefere pagar alguém para fazer tudo.</p>
   </div>
 </section>
 
@@ -481,19 +465,20 @@
   const typing = document.getElementById('typing');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   let started = false;
-  function play(){
+  // a conversa já abre com as 2 primeiras mensagens; na primeira vez anima a partir da 3ª, depois repete inteira
+  function play(primeira){
     if (reduce){ msgs.forEach(m => m.classList.add('show')); return; }
-    msgs.forEach(m => m.classList.remove('show'));
-    let t = 300;
-    msgs.forEach((m) => {
+    if (!primeira) msgs.forEach(m => m.classList.remove('show'));
+    let t = primeira ? 600 : 300;
+    msgs.slice(primeira ? 2 : 0).forEach((m) => {
       const isAi = m.classList.contains('ai');
       if (isAi){ setTimeout(() => typing.classList.add('show'), t); t += 1100; }
       setTimeout(() => { typing.classList.remove('show'); m.classList.add('show'); }, t);
       t += isAi ? 1500 : 1200;
     });
-    setTimeout(play, t + 4000);
+    setTimeout(() => play(false), t + 4000);
   }
-  new IntersectionObserver(([e]) => { if (e.isIntersecting && !started){ started = true; play(); } }, { threshold: .35 }).observe(document.getElementById('demo'));
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !started){ started = true; play(true); } }, { threshold: .2 }).observe(document.getElementById('demo'));
 </script>
 </body>
 </html>
